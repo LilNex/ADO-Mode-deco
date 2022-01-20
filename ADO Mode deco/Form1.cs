@@ -28,8 +28,20 @@ namespace ADO_Mode_deco
         {
             sda = new SqlDataAdapter("select * from client",conn);
             sda.Fill(ds,"client");
+
+            // Affecte le dataset au datasource du combo box
             comboBox1.DataSource = ds.Tables[0];
+            // Specifie l'attribut à afficher dans le combobox
             comboBox1.DisplayMember = "Nom";
+
+
+            // 2eme methode
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                comboBox2.Items.Add(ds.Tables[0].Rows[i][0]);
+            }
+
+
             lblCount.Text = ds.Tables[0].Rows.Count.ToString();
         }
         private void btnAfficher_Click(object sender, EventArgs e)
@@ -64,6 +76,38 @@ namespace ADO_Mode_deco
             SqlCommandBuilder scb = new SqlCommandBuilder(sda);
             sda.Update(ds,"client");
             
+        }
+
+        private void btnModifier_Click(object sender, EventArgs e)
+        {
+            DataRow dr = ds.Tables[0].Select("Id=" + txtId.Text).First();
+            //txtNom.Text = dr[1].ToString();
+            //txtPrenom.Text = dr[2].ToString();
+            dr[1] = txtNom.Text;
+            dr[2] = txtPrenom.Text;
+
+        }
+
+        private void btnRechercher_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataRow dr = ds.Tables[0].Select("Id=" + txtId.Text).First();
+                txtNom.Text = dr[1].ToString();
+                txtPrenom.Text = dr[2].ToString();
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show("Id inexistant");
+            }
+            
+        }
+
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            //ds.Tables[0].Select("Id=" + txtId.Text)[0].Delete();
+            ds.Tables[0].Select("Id=" + txtId.Text).First().Delete();
+
         }
     }
 }
