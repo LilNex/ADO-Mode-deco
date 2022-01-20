@@ -16,7 +16,7 @@ namespace ADO_Mode_deco
         SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-CLLLEH7\SQLEXPRESS;Initial Catalog=Tp_deco;Integrated Security=True");
 
 
-        DataSet ds = new DataSet();
+        DataSet ds = new DataSet("GestionClient");
         SqlDataAdapter sda;
 
 
@@ -44,6 +44,7 @@ namespace ADO_Mode_deco
 
             lblCount.Text = ds.Tables[0].Rows.Count.ToString();
         }
+
         private void btnAfficher_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = ds.Tables[0];
@@ -157,5 +158,61 @@ namespace ADO_Mode_deco
             return pos;
         }
 
+        static int pos = 0;
+
+        public void naviguer()
+        {
+
+            txtId.Text = ds.Tables[0].Rows[pos][0].ToString();
+            txtNom.Text = ds.Tables[0].Rows[pos][1].ToString();
+            txtPrenom.Text = ds.Tables[0].Rows[pos][2].ToString();
+
+        }
+
+        private void btnFirst_Click(object sender, EventArgs e)
+        {
+            pos = 0;
+            naviguer();
+        }
+
+        private void btnPrec_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                pos--;
+                naviguer();
+            }
+            catch (Exception)
+            {
+                pos = 0;
+                naviguer();
+
+            }
+            
+
+        }
+
+        private void btnSuiv_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                pos++;
+                naviguer();
+            }
+            catch (Exception)
+            {
+                pos = ds.Tables[0].Rows.Count - 1;
+                naviguer();
+
+            }
+
+        }
+
+        private void btnLast_Click(object sender, EventArgs e)
+        {
+            pos = ds.Tables[0].Rows.Count - 1;
+            naviguer();
+
+        }
     }
 }

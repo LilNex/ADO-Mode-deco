@@ -45,13 +45,17 @@
             this.btnModifier = new System.Windows.Forms.Button();
             this.btnSupprimer = new System.Windows.Forms.Button();
             this.btnRechercher = new System.Windows.Forms.Button();
+            this.btnFirst = new System.Windows.Forms.Button();
+            this.btnPrec = new System.Windows.Forms.Button();
+            this.btnSuiv = new System.Windows.Forms.Button();
+            this.btnLast = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 216);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 291);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(407, 222);
             this.dataGridView1.TabIndex = 0;
@@ -198,11 +202,55 @@
             this.btnRechercher.UseVisualStyleBackColor = true;
             this.btnRechercher.Click += new System.EventHandler(this.btnRechercher_Click);
             // 
+            // btnFirst
+            // 
+            this.btnFirst.Location = new System.Drawing.Point(15, 231);
+            this.btnFirst.Name = "btnFirst";
+            this.btnFirst.Size = new System.Drawing.Size(80, 54);
+            this.btnFirst.TabIndex = 17;
+            this.btnFirst.Text = "<<";
+            this.btnFirst.UseVisualStyleBackColor = true;
+            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
+            // 
+            // btnPrec
+            // 
+            this.btnPrec.Location = new System.Drawing.Point(101, 231);
+            this.btnPrec.Name = "btnPrec";
+            this.btnPrec.Size = new System.Drawing.Size(80, 54);
+            this.btnPrec.TabIndex = 18;
+            this.btnPrec.Text = "<";
+            this.btnPrec.UseVisualStyleBackColor = true;
+            this.btnPrec.Click += new System.EventHandler(this.btnPrec_Click);
+            // 
+            // btnSuiv
+            // 
+            this.btnSuiv.Location = new System.Drawing.Point(187, 231);
+            this.btnSuiv.Name = "btnSuiv";
+            this.btnSuiv.Size = new System.Drawing.Size(80, 54);
+            this.btnSuiv.TabIndex = 19;
+            this.btnSuiv.Text = ">";
+            this.btnSuiv.UseVisualStyleBackColor = true;
+            this.btnSuiv.Click += new System.EventHandler(this.btnSuiv_Click);
+            // 
+            // btnLast
+            // 
+            this.btnLast.Location = new System.Drawing.Point(273, 231);
+            this.btnLast.Name = "btnLast";
+            this.btnLast.Size = new System.Drawing.Size(80, 54);
+            this.btnLast.TabIndex = 20;
+            this.btnLast.Text = ">>";
+            this.btnLast.UseVisualStyleBackColor = true;
+            this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 450);
+            this.ClientSize = new System.Drawing.Size(442, 525);
+            this.Controls.Add(this.btnLast);
+            this.Controls.Add(this.btnSuiv);
+            this.Controls.Add(this.btnPrec);
+            this.Controls.Add(this.btnFirst);
             this.Controls.Add(this.btnRechercher);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.btnModifier);
@@ -248,6 +296,10 @@
         private System.Windows.Forms.Button btnModifier;
         private System.Windows.Forms.Button btnSupprimer;
         private System.Windows.Forms.Button btnRechercher;
+        private System.Windows.Forms.Button btnFirst;
+        private System.Windows.Forms.Button btnPrec;
+        private System.Windows.Forms.Button btnSuiv;
+        private System.Windows.Forms.Button btnLast;
     }
 }
 
