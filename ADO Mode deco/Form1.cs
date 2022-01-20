@@ -191,7 +191,7 @@ namespace ADO_Mode_deco
             
 
         }
-
+        //x
         private void btnSuiv_Click(object sender, EventArgs e)
         {
             try
