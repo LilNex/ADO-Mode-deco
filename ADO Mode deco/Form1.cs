@@ -80,34 +80,82 @@ namespace ADO_Mode_deco
 
         private void btnModifier_Click(object sender, EventArgs e)
         {
-            DataRow dr = ds.Tables[0].Select("Id=" + txtId.Text).First();
+            //DataRow dr = ds.Tables[0].Select("Id=" + txtId.Text).First();
+            //dr[1] = txtNom.Text;
+            //dr[2] = txtPrenom.Text;
             //txtNom.Text = dr[1].ToString();
             //txtPrenom.Text = dr[2].ToString();
-            dr[1] = txtNom.Text;
-            dr[2] = txtPrenom.Text;
+            int pos = rechercher();
+            if (pos != -1) {
+                ds.Tables[0].Rows[pos][1] = txtNom.Text;
+                ds.Tables[0].Rows[pos][2] = txtPrenom.Text;
+            }
+
+            
 
         }
 
         private void btnRechercher_Click(object sender, EventArgs e)
         {
-            try
-            {
-                DataRow dr = ds.Tables[0].Select("Id=" + txtId.Text).First();
-                txtNom.Text = dr[1].ToString();
-                txtPrenom.Text = dr[2].ToString();
-            }
-            catch (InvalidOperationException ex)
-            {
-                MessageBox.Show("Id inexistant");
-            }
+            //try
+            //{
+                //DataRow dr = ds.Tables[0].Select("Id=" + txtId.Text).First();
+                int i = rechercher();
+                if (i != -1)
+                {
+                    txtNom.Text = ds.Tables[0].Rows[i][1].ToString();
+                    txtPrenom.Text = ds.Tables[0].Rows[i][2].ToString();
+                    return;
+                }
+                else {
+                    txtNom.Text = "";
+                    txtPrenom.Text = "";
+                    MessageBox.Show("Id inexistant");
+                }
+                
+
+
+            //}
+            //catch (InvalidOperationException ex)
+            //{
+            //    MessageBox.Show("Id inexistant");
+            //}
             
         }
 
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
             //ds.Tables[0].Select("Id=" + txtId.Text)[0].Delete();
-            ds.Tables[0].Select("Id=" + txtId.Text).First().Delete();
+            //ds.Tables[0].Select("Id=" + txtId.Text).First().Delete();
+
+            int pos = rechercher();
+            if(pos != -1)
+            {
+                ds.Tables[0].Rows[pos].Delete();
+                MessageBox.Show("Client Supprimé");
+
+            }
+            else
+            {
+                MessageBox.Show("Id inexistant");
+            }
+
 
         }
+
+        public int rechercher()
+        {
+            int pos = -1;
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                DataRow row = ds.Tables[0].Rows[i];
+                if (row[0].ToString() == txtId.Text)
+                {
+                    pos = i;
+                }
+            }
+            return pos;
+        }
+
     }
 }
