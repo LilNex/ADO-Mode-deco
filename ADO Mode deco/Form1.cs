@@ -14,8 +14,6 @@ namespace ADO_Mode_deco
     public partial class Form1 : Form
     {
         SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-CLLLEH7\SQLEXPRESS;Initial Catalog=Tp_deco;Integrated Security=True");
-
-
         DataSet ds = new DataSet("GestionClient");
         SqlDataAdapter sda;
 
@@ -69,7 +67,7 @@ namespace ADO_Mode_deco
 
             ds.Tables["client"].Rows.Add(dr);
 
-            MessageBox.Show("Client Ajouté avec succes! ");
+            MessageBox.Show("Client Ajouté avec HHHHHH! ");
         }
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
@@ -133,7 +131,7 @@ namespace ADO_Mode_deco
             if(pos != -1)
             {
                 ds.Tables[0].Rows[pos].Delete();
-                MessageBox.Show("Client Supprimé");
+                MessageBox.Show("Client HHHHHHHH");
 
             }
             else
@@ -191,7 +189,7 @@ namespace ADO_Mode_deco
             
 
         }
-
+        //x
         private void btnSuiv_Click(object sender, EventArgs e)
         {
             try
